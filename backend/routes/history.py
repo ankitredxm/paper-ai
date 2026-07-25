@@ -18,6 +18,9 @@ def get_history():
 
     df = pd.read_csv(CSV_FILE)
 
+    if "timestamp" not in df.columns:
+        df["timestamp"] = ""
+
     # Return latest 50 rows
     df = df.tail(50)
 

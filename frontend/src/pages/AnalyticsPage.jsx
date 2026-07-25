@@ -1,3 +1,23 @@
-import { Box, Grid, Typography } from '@mui/material'; import { usePrediction } from '../context/PredictionContext'; import BasisWeightChart from '../charts/BasisWeightChart'; import SteamPressureChart from '../charts/SteamPressureChart'; import MachineSpeedChart from '../charts/MachineSpeedChart'; import AnalyticsCards from '../components/AnalyticsCards';
-const data = Array.from({ length: 10 }, (_, i) => ({ time: `${String(7 + Math.floor(i / 2)).padStart(2, '0')}:${i % 2 ? '30' : '00'}`, basisWeight: 80 + [-.3,.1,.2,-.1,.35,.18,.05,.3,.12,.2][i], steamPressure: 118 + [-1,0,1,2,1,0,1,2,1,0][i], machineSpeed: 980 + [-7,-4,4,7,2,-2,4,5,0,-3][i] }));
-export default function AnalyticsPage() { const { lastInput } = usePrediction(); return <Box><Typography variant="h4">Analytics</Typography><Typography color="text.secondary" mb={3}>Performance and stability analysis for the active production shift.</Typography><AnalyticsCards/><Grid container spacing={2.25} mt={.1}><Grid size={{ xs: 12, lg: 4 }}><BasisWeightChart data={data} target={lastInput.target_basis_weight}/></Grid><Grid size={{ xs: 12, lg: 4 }}><SteamPressureChart data={data}/></Grid><Grid size={{ xs: 12, lg: 4 }}><MachineSpeedChart data={data}/></Grid></Grid></Box>; }
+import { Box, Grid, Typography } from '@mui/material';
+import { usePrediction } from '../context/PredictionContext';
+import BasisWeightChart from '../charts/BasisWeightChart';
+import SteamPressureChart from '../charts/SteamPressureChart';
+import MachineSpeedChart from '../charts/MachineSpeedChart';
+import AnalyticsCards from '../components/AnalyticsCards';
+import Loader from '../components/Loader';
+import { useHistory } from '../hooks/useHistory';
+
+const toTrendData = (history) => history.filter((entry) => entry.timestamp).map((entry) => ({
+  timestamp: entry.timestamp,
+  basisWeight: Number(entry.predicted_basis_weight ?? entry.actual_basis_weight),
+  steamPressure: Number(entry.steam_pressure),
+  machineSpeed: Number(entry.machine_speed),
+}));
+
+export default function AnalyticsPage() {
+  const { lastInput } = usePrediction();
+  const { data, loading } = useHistory();
+  const trend = toTrendData(data);
+
+  return <Box><Typography variant="h4">Analytics</Typography><Typography color="text.secondary" mb={3}>Performance and stability analysis for the active production shift.</Typography><AnalyticsCards/>{loading ? <Loader /> : <Grid container spacing={2.25} mt={.1}><Grid size={{ xs: 12, lg: 4 }}><BasisWeightChart data={trend} target={lastInput.target_basis_weight}/></Grid><Grid size={{ xs: 12, lg: 4 }}><SteamPressureChart data={trend}/></Grid><Grid size={{ xs: 12, lg: 4 }}><MachineSpeedChart data={trend}/></Grid></Grid>}</Box>;
+}

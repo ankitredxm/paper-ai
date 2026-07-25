@@ -1,2 +1,6 @@
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'; import ChartFrame from './ChartFrame';
-export default function MachineSpeedChart({ data }) { return <ChartFrame title="Machine speed trend" subtitle="Current operating period"><ResponsiveContainer width="100%" height="82%"><LineChart data={data}><CartesianGrid stroke="#E2E8F0" vertical={false}/><XAxis dataKey="time" tick={{fontSize:11}}/><YAxis tick={{fontSize:11}} domain={['dataMin - 10','dataMax + 10']}/><Tooltip/><Line type="monotone" dataKey="machineSpeed" name="Machine speed" stroke="#1E293B" strokeWidth={2.25} dot={false} animationDuration={500}/></LineChart></ResponsiveContainer></ChartFrame>; }
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import ChartFrame from './ChartFrame';
+
+export default function MachineSpeedChart({ data }) {
+  return <ChartFrame title="Machine speed trend" subtitle="Recorded production history" data={data}><ResponsiveContainer width="100%" height="82%"><LineChart data={data}><CartesianGrid stroke="#E2E8F0" vertical={false}/><XAxis dataKey="timestamp" tick={{fontSize:11}}/><YAxis tick={{fontSize:11}} domain={['dataMin - 10','dataMax + 10']}/><Tooltip/><Line type="monotone" dataKey="machineSpeed" name="Machine speed" stroke="#1E293B" strokeWidth={2.25} dot={false} animationDuration={500}/></LineChart></ResponsiveContainer></ChartFrame>;
+}

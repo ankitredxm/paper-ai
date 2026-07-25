@@ -1,2 +1,6 @@
-import { ResponsiveContainer, CartesianGrid, Legend, Line, LineChart, ReferenceLine, Tooltip, XAxis, YAxis } from 'recharts'; import ChartFrame from './ChartFrame';
-export default function BasisWeightChart({ data, target }) { return <ChartFrame title="Future basis weight trend" subtitle="Projected 60-minute production window"><ResponsiveContainer width="100%" height="82%"><LineChart data={data}><CartesianGrid stroke="#E2E8F0" vertical={false} /><XAxis dataKey="time" tick={{ fontSize: 11 }} /><YAxis domain={['dataMin - .5', 'dataMax + .5']} tick={{ fontSize: 11 }} /><Tooltip /><Legend iconType="circle" /><ReferenceLine y={target} stroke="#F59E0B" strokeDasharray="4 4" /><Line type="monotone" dataKey="basisWeight" name="Predicted GSM" stroke="#C8102E" strokeWidth={2.5} dot={false} animationDuration={500} /></LineChart></ResponsiveContainer></ChartFrame>; }
+import { ResponsiveContainer, CartesianGrid, Legend, Line, LineChart, ReferenceLine, Tooltip, XAxis, YAxis } from 'recharts';
+import ChartFrame from './ChartFrame';
+
+export default function BasisWeightChart({ data, target }) {
+  return <ChartFrame title="Future basis weight trend" subtitle="Recorded production history" data={data}><ResponsiveContainer width="100%" height="82%"><LineChart data={data}><CartesianGrid stroke="#E2E8F0" vertical={false} /><XAxis dataKey="timestamp" tick={{ fontSize: 11 }} /><YAxis domain={['dataMin - .5', 'dataMax + .5']} tick={{ fontSize: 11 }} /><Tooltip /><Legend iconType="circle" /><ReferenceLine y={target} stroke="#F59E0B" strokeDasharray="4 4" /><Line type="monotone" dataKey="basisWeight" name="Predicted GSM" stroke="#C8102E" strokeWidth={2.5} dot={false} animationDuration={500} /></LineChart></ResponsiveContainer></ChartFrame>;
+}
