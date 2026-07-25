@@ -1,0 +1,2 @@
+import { Box, Typography } from '@mui/material';
+export default function Footer() { return <Box component="footer" sx={{ py: 2, borderTop: '1px solid #E2E8F0', mt: 4, display: 'flex', justifyContent: 'space-between', color: 'text.secondary' }}><Typography variant="caption">PaperAI v1.0.0</Typography><Typography variant="caption">Industrial AI Hackathon · Honeywell-inspired workspace</Typography></Box>; }

@@ -1,0 +1,1 @@
+MODEL_PATH = "models/xgboost_model_v2.pkl"

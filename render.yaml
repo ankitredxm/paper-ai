@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: paperai-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirement.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CORS_ORIGINS
+        sync: false

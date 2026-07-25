@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Modern paper manufacturing plant">
+  <rect width="1600" height="900" fill="#1E293B"/>
+  <rect y="690" width="1600" height="210" fill="#142033"/>
+  <g fill="#334155"><path d="M0 410h245v280H0zM280 290h340v400H280zM655 365h255v325H655zM945 250h330v440H945zM1310 420h290v270h-290z"/></g>
+  <g fill="#475569"><rect x="52" y="470" width="150" height="18"/><rect x="333" y="375" width="235" height="18"/><rect x="695" y="450" width="170" height="18"/><rect x="1000" y="335" width="230" height="18"/><rect x="1360" y="480" width="180" height="18"/></g>
+  <g fill="#94A3B8" opacity=".55"><rect x="106" y="165" width="58" height="305"/><rect x="1082" y="120" width="70" height="215"/><rect x="1450" y="245" width="46" height="235"/></g>
+  <g fill="#CBD5E1" opacity=".28"><path d="M135 165c-35-65 20-95 0-150-10 60-60 84 0 150M1117 120c-40-62 16-105-8-150-12 58-59 89 8 150M1473 245c-32-58 14-91-8-130-9 50-52 76 8 130"/></g>
+  <g stroke="#C8102E" stroke-width="10" opacity=".9"><path d="M250 645h380"/><path d="M910 610h355"/><path d="M1275 675h250"/></g>
+  <g fill="#E2E8F0" opacity=".3"><circle cx="292" cy="645" r="24"/><circle cx="480" cy="645" r="24"/><circle cx="956" cy="610" r="24"/><circle cx="1160" cy="610" r="24"/><circle cx="1350" cy="675" r="24"/></g>
+</svg>
